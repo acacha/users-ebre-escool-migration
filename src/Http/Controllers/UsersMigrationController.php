@@ -29,7 +29,7 @@ class UsersMigrationController extends Controller
     {
         $this->authorize('migrate-users');
         $data = [];
-        return view('ebre-escool-migration::users-migration',$data);
+        return view('acacha_users_ebre_escool_migration::users-migration',$data);
     }
 
     /**
@@ -82,7 +82,7 @@ class UsersMigrationController extends Controller
         $this->authorize('migrate-users');
         $connection = $request->has('connection')
             ?  $request->has('connection')
-            : config('users.source_database_connection_name');
+            : config('users-ebre-escool-migration.source_database_connection_name');
         if (check_connection($connection)) return [ 'connected' => true ];
         return [ 'connected' => false ];
     }

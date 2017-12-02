@@ -38,6 +38,9 @@ class UsersEbreEscoolMigrationProvider extends EventServiceProvider
 
         $this->registerEloquentFactoriesFrom(ACACHA_EBRE_ESCOOL_MIGRATION . '/database/factories');
 
+        $this->mergeConfigFrom(
+            ACACHA_EBRE_ESCOOL_MIGRATION .'/config/users-ebre-escool-migration.php', 'acacha_users_ebre_escool_migration'
+        );
     }
 
     /**
@@ -53,7 +56,15 @@ class UsersEbreEscoolMigrationProvider extends EventServiceProvider
 
         $this->loadMigrations();
         $this->publishFactories();
+        $this->publishConfig();
 
+    }
+
+    /**
+     * Publish config auth.
+     */
+    private function publishConfig() {
+        $this->publishes(AcachaUsersEbreEscoolMigration::config(), 'acacha_users_ebre_escool_migration');
     }
 
     /**
@@ -84,7 +95,7 @@ class UsersEbreEscoolMigrationProvider extends EventServiceProvider
      */
     private function loadViews()
     {
-        $this->loadViewsFrom(ACACHA_EBRE_ESCOOL_MIGRATION.'/resources/views', 'ebre-escool-migration');
+        $this->loadViewsFrom(ACACHA_EBRE_ESCOOL_MIGRATION.'/resources/views', 'acacha_users_ebre_escool_migration');
     }
 
     /**

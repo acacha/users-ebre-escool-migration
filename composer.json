@@ -1,0 +1,63 @@
+{
+    "name": "acacha/users-ebre-escool-migration",
+    "type": "library",
+    "description": "Tool to migrate ebre-escool_users to new scool",
+    "keywords": [
+        "acacha",
+        "users-ebre-escool-migration"
+    ],
+    "homepage": "https://github.com/acacha/users-ebre-escool-migration",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sergi Tur Badenas",
+            "email": "sergiturbadenas@gmail.com",
+            "homepage": "https://github.com/acacha",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "~5.6|~7.0",
+        "acacha/stateful-eloquent": "dev-master",
+        "laravel/framework": "^5.5",
+        "scool/ebre_escool_model": "dev-master"
+    },
+    "require-dev": {
+        "phpunit/phpunit" : ">=5.4.3",
+        "squizlabs/php_codesniffer": "^2.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Acacha\\UsersEbreEscoolMigration\\": "src"
+        },
+        "files" : [
+            "src/helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Acacha\\UsersEbreEscoolMigration\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "check-style": "phpcs -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src tests",
+        "fix-style": "phpcbf -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src tests"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        },
+        "laravel": {
+            "providers": [
+                "Acacha\\UsersEbreEscoolMigration\\Providers\\UsersEbreEscoolMigrationProvider"
+            ],
+            "aliases": {
+                "AcachaEvents": "Acacha\\UsersEbreEscoolMigration\\AcachaUsersEbreEscoolMigration"
+            }
+        }
+    },
+    "config": {
+        "sort-packages": true
+    }
+}

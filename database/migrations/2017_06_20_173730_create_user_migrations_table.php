@@ -18,7 +18,7 @@ class CreateUserMigrationsTable extends Migration
     {
         Schema::create('user_migrations', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('source_user_id')->unsigned()->nullable();
+            $table->integer('source_user_id')->unsigned()->nullable();
             $table->json('source_user');
             $table->boolean('done')->default(true);
             $table->integer('user_id')->unsigned()->nullable();
